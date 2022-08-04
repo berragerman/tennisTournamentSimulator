@@ -13,5 +13,6 @@ namespace TennisTournamentSimulator.Domain.Entities
         public int Strength { get; set; }
         public int Speed { get; set; }
         public int Reaction { get; set; }
+        public int Lucky { get; set; }
     }
 }

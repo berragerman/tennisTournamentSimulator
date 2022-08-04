@@ -125,6 +125,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
 
             var winner = simulator.Play(tournament);
 
+            /// Assert
             Assert.NotNull(winner);
             Assert.Equal(expected: "Player 4", winner.Name);
         }
