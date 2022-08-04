@@ -8,7 +8,7 @@ namespace TennisTournamentSimulator.Domain.Entities
 {
     public enum TournamentType
     {
-        Femenino = 0,
-        Masculino = 1
+        Male = 0,
+        Female = 1
     }
 }

@@ -10,8 +10,8 @@ namespace TennisTournamentSimulator.Domain.Simulators
 {
     public class Simulator 
     {
-        private MatchFactory matchFactory;
-        public Simulator(MatchFactory matchFactory)
+        private IMatchFactory matchFactory;
+        public Simulator(IMatchFactory matchFactory)
         {
             this.matchFactory = matchFactory;
         }
@@ -20,12 +20,12 @@ namespace TennisTournamentSimulator.Domain.Simulators
             if (tournament.Status != TournamentStatus.Pending)
                 throw new InvalidTournamentException();
 
-            if (tournament.Players.Any())
+            if (tournament.Players == null ||
+                !tournament.Players.Any() ||
+                (Math.Sqrt(tournament.Players.Count()) % 1) != 0)
                 throw new WrongNumberOfPlayersException();
-
             
-            
-            Match[] matches = BuildMatches(tournament.Type, tournament.Players);
+            IMatch[] matches = BuildMatches(tournament.Type, tournament.Players);
 
             while (matches.Length != 1)
             {
@@ -37,9 +37,9 @@ namespace TennisTournamentSimulator.Domain.Simulators
             return winner;
         }
 
-        private Match[] BuildMatches( TournamentType type, Player[] participants) { 
+        private IMatch[] BuildMatches( TournamentType type, Player[] participants) { 
             
-            List<Match> matches = new List<Match>();
+            List<IMatch> matches = new List<IMatch>();
             for (int i = 0; i < participants.Length/2; i++)
             {
                 matches.Add(matchFactory.Create(type, participants[i * 2], participants[(i * 2) + 1]));

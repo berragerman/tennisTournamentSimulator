@@ -7,7 +7,10 @@ using TennisTournamentSimulator.Domain.Entities;
 
 namespace TennisTournamentSimulator.Domain.Simulators
 {
-    public abstract class Match
+    public interface IMatch {
+        Player Play();
+    }
+    public abstract class Match: IMatch
     {
         public Player ParticipantA { get; private set; }
         public Player ParticipantB { get; private set; }

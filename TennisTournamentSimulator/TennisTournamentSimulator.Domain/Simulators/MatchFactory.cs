@@ -7,9 +7,12 @@ using TennisTournamentSimulator.Domain.Entities;
 
 namespace TennisTournamentSimulator.Domain.Simulators
 {
-    public class MatchFactory
+    public interface IMatchFactory {
+        IMatch Create(TournamentType type, Player ParticipantA, Player ParticipantB);
+    }
+    public class MatchFactory: IMatchFactory
     {
-        public Match Create(TournamentType type, Player ParticipantA, Player ParticipantB) {
+        public IMatch Create(TournamentType type, Player ParticipantA, Player ParticipantB) {
             throw new NotImplementedException();
         }
     }
