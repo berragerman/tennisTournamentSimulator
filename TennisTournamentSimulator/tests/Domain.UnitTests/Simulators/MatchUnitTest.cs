@@ -1,6 +1,6 @@
-﻿using TennisTournamentSimulator.Domain.Entities;
-using TennisTournamentSimulator.Domain.Enums;
-using TennisTournamentSimulator.Domain.Simulators;
+﻿using Domain.Entities;
+using Domain.Enums;
+using Domain.Simulators;
 
 namespace TennisTournamentSimulator.UnitTest.Simulators
 {

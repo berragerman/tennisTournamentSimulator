@@ -1,8 +1,8 @@
 ﻿using Moq;
-using TennisTournamentSimulator.Domain.Entities;
-using TennisTournamentSimulator.Domain.Enums;
-using TennisTournamentSimulator.Domain.Exceptions;
-using TennisTournamentSimulator.Domain.Simulators;
+using Domain.Entities;
+using Domain.Enums;
+using Domain.Exceptions;
+using Domain.Simulators;
 
 namespace TennisTournamentSimulator.UnitTest.Simulators
 {
