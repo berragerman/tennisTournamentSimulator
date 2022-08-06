@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TennisTournamentSimulator.Domain.Entities
+namespace Domain.Enums
 {
     public enum TournamentType
     {

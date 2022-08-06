@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TennisTournamentSimulator.Domain.Entities;
+﻿using TennisTournamentSimulator.Domain.Entities;
+using TennisTournamentSimulator.Domain.Enums;
 using TennisTournamentSimulator.Domain.Simulators;
 
 namespace TennisTournamentSimulator.UnitTest.Simulators

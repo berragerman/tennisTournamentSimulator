@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TennisTournamentSimulator.Domain.Entities;
+using TennisTournamentSimulator.Domain.Enums;
 using TennisTournamentSimulator.Domain.Exceptions;
 
 namespace TennisTournamentSimulator.Domain.Simulators

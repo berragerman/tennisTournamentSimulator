@@ -1,5 +1,6 @@
 ﻿
 using TennisTournamentSimulator.Domain.Entities;
+using TennisTournamentSimulator.Domain.Enums;
 
 namespace TennisTournamentSimulator.Domain.Simulators
 {

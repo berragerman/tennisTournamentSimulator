@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TennisTournamentSimulator.Domain.Entities
 {
-    public class Player
+    public class Player : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
         public int Abillity { get; set; }
