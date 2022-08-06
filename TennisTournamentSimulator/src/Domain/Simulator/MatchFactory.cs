@@ -69,7 +69,7 @@ namespace Domain.Simulators
 
                 bool hasLucky = random.Next(1, 20) + participant.Lucky >= 20;
 
-                int points = participant.Abillity + participant.Strength + participant.Speed;
+                int points = participant.Ability + participant.Strength + participant.Speed;
 
                 if (hasLucky)
                 {
@@ -118,7 +118,7 @@ namespace Domain.Simulators
 
                 bool hasLucky = random.Next(1, 20) + participant.Lucky >= 20;
 
-                int points = participant.Abillity + participant.Reaction;
+                int points = participant.Ability + participant.Reaction;
 
                 if (hasLucky)
                 {

@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<PlayerDTO[]>> GetAll(string name)
+        public async Task<ActionResult<PlayerDTO[]>> GetAll(string? name)
         {
             return await Mediator.Send(new GetAllPlayersQuery() { 
                 Name = name
@@ -36,7 +36,7 @@ namespace WebApi.Controllers
         {
             return await Mediator.Send(command);
         }
-        [HttpPut("{id}")]
+        [HttpPut("[action]")]
         public async Task<ActionResult> Update(UpdatePlayerCommand command)
         {
             await Mediator.Send(command);

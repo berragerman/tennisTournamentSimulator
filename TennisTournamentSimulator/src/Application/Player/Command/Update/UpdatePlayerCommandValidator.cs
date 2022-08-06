@@ -11,8 +11,6 @@ namespace Application.Player.Command.Update
     {
         public UpdatePlayerCommandValidator()
         {
-            RuleFor(v => v.Id)
-                .NotNull();
 
             RuleFor(v => v.Ability)
                 .GreaterThanOrEqualTo(1)

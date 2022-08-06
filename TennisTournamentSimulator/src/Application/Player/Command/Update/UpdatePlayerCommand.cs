@@ -12,7 +12,7 @@ namespace Application.Player.Command.Update
     public class UpdatePlayerCommand : IRequest
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public int Ability { get; set; }
         public int Reaction { get; set; }
         public int Speed { get; set; }
@@ -38,10 +38,11 @@ namespace Application.Player.Command.Update
             }
 
             entity.Name = request.Name;
-            entity.Abillity = request.Ability;
+            entity.Ability = request.Ability;
             entity.Reaction = request.Reaction;
             entity.Speed = request.Speed;
             entity.Strength = request.Strength;
+            entity.Lucky = request.Lucky;
             entity.Inactive = request.Inactive;
 
 

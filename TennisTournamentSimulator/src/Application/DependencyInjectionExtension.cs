@@ -13,7 +13,7 @@ namespace Application
             services.AddValidatorsFromAssembly(GetAssembly());
             services.AddMediatR(GetAssembly());
             
-            return services;
+             return services;
         }
 
         public static Assembly GetAssembly()

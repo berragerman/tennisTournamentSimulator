@@ -17,7 +17,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             var participantA = new Player()
             {
                 Name = "Participant A",
-                Abillity = 50,
+                Ability = 50,
                 Speed = 60,
                 Strength = 30
             };
@@ -25,7 +25,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             var participantB = new Player()
             {
                 Name = "Participant B",
-                Abillity = 30,
+                Ability = 30,
                 Speed = 20,
                 Strength = 80
             };
@@ -43,14 +43,14 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             var participantA = new Player()
             {
                 Name = "Participant A",
-                Abillity = 50,
+                Ability = 50,
                 Reaction = 30
             };
 
             var participantB = new Player()
             {
                 Name = "Participant B",
-                Abillity = 30,
+                Ability = 30,
                 Reaction = 80
             };
 
@@ -69,7 +69,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             {
                 Name = "Unlucky participant",
                 Lucky = 0,
-                Abillity = 40,
+                Ability = 40,
                 Speed = 30,
                 Strength = 50,
                 Reaction = 40
@@ -79,7 +79,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             {
                 Name = "Lucky participant",
                 Lucky = 100,
-                Abillity = 30,
+                Ability = 30,
                 Speed = 30,
                 Strength = 40,
                 Reaction = 10
@@ -101,7 +101,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             {
                 Name = "Unlucky participant",
                 Lucky = 0,
-                Abillity = 40,
+                Ability = 40,
                 Speed = 30,
                 Strength = 50,
                 Reaction = 40
@@ -111,7 +111,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             {
                 Name = "Lucky participant",
                 Lucky = 100,
-                Abillity = 30,
+                Ability = 30,
                 Speed = 30,
                 Strength = 40,
                 Reaction = 15

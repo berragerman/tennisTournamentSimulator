@@ -33,7 +33,7 @@ namespace Application.Player.Command.Create
             var player = new Domain.Entities.Player()
             {
                 Name = request.Name,
-                Abillity = request.Ability,
+                Ability = request.Ability,
                 Reaction = request.Reaction,
                 Speed = request.Speed,
                 Strength = request.Strength,

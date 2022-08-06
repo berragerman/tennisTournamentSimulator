@@ -35,7 +35,6 @@ namespace Application.Player.Queries.Get
                 if (!string.IsNullOrEmpty(request.Name))
                     query = query.Where(x => x.Name.Contains(request.Name));
 
-
                 return query.OrderByDescending(p => p.Name)
                         .ProjectTo<PlayerDTO>(_mapper.ConfigurationProvider)
                         .ToArray();
