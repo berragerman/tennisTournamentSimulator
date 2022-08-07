@@ -15,6 +15,7 @@ namespace Infrastructure.Persistence
         }
 
         public DbSet<Player>? Players { get; set; }
+        public DbSet<Tournament> Tournaments { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

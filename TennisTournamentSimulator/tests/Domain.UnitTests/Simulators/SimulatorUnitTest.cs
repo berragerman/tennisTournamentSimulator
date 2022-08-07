@@ -38,7 +38,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             var tournament = new Tournament()
             {
                 Status = TournamentStatus.Pending,
-                Players = new Player[0]
+                Players = new List<Player>()
             };
             var simulator = new Simulator(mockMatchFactory.Object);
 
@@ -57,7 +57,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             var tournament = new Tournament()
             {
                 Status = TournamentStatus.Pending,
-                Players = new Player[] { 
+                Players = new List<Player>() { 
                     new Player(),
                     new Player(),
                     new Player()
@@ -98,7 +98,7 @@ namespace TennisTournamentSimulator.UnitTest.Simulators
             {
                 Status = TournamentStatus.Pending,
                 Type = TournamentType.Male,
-                Players = new Player[] {
+                Players = new List<Player>() {
                     player1,
                     player2,
                     player3,

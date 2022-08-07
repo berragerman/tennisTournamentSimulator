@@ -2,6 +2,7 @@
 using System.Reflection;
 using FluentValidation;
 using MediatR;
+using Domain.Simulators;
 
 namespace Application
 {
@@ -12,6 +13,9 @@ namespace Application
             services.AddAutoMapper(GetAssembly());
             services.AddValidatorsFromAssembly(GetAssembly());
             services.AddMediatR(GetAssembly());
+
+            services.AddSingleton<IMatchFactory, MatchFactory>();
+            services.AddSingleton<ISimulator, Simulator>();
             
              return services;
         }

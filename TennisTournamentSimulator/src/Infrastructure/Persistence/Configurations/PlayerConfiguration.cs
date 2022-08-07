@@ -16,6 +16,22 @@ namespace Infrastructure.Persistence.Configurations
             builder.Property(t => t.Name)
                 .HasMaxLength(100)
                 .IsRequired();
+
+            builder.HasMany(p => p.Tournaments)
+                   .WithMany(t => t.Players)
+                   .UsingEntity<PlayerTournament>(
+                   p => p
+                       .HasOne<Tournament>()
+                       .WithMany()
+                       .HasForeignKey("TournamentId")
+                       .HasConstraintName("FK_PlayersTournaments_Tournaments_TournamentId")
+                       .OnDelete(DeleteBehavior.ClientCascade),
+                    t => t
+                       .HasOne<Player>()
+                       .WithMany()
+                       .HasForeignKey("PlayerId")
+                       .HasConstraintName("FK_PlayersTournaments_Players_PlayerId")
+                       .OnDelete(DeleteBehavior.Cascade));
         }
     }
 }

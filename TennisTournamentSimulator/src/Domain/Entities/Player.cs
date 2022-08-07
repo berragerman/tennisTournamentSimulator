@@ -9,6 +9,7 @@ namespace Domain.Entities
         public int Speed { get; set; }
         public int Reaction { get; set; }
         public int Lucky { get; set; }
-        public virtual Tournament[] Tournaments { get; set; }
+        public List<Tournament> Tournaments { get; set; }
+        public ICollection<PlayerTournament> PlayerTournaments { get; set; }
     }
 }

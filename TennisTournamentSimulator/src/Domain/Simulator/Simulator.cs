@@ -9,7 +9,11 @@ using Domain.Exceptions;
 
 namespace Domain.Simulators
 {
-    public class Simulator 
+    public interface ISimulator {
+        Player Play(Tournament tournament);
+    }
+
+    public class Simulator : ISimulator
     {
         private IMatchFactory matchFactory;
         public Simulator(IMatchFactory matchFactory)
@@ -26,7 +30,7 @@ namespace Domain.Simulators
                 (Math.Sqrt(tournament.Players.Count()) % 1) != 0)
                 throw new WrongNumberOfPlayersException();
             
-            IMatch[] matches = BuildMatches(tournament.Type, tournament.Players);
+            IMatch[] matches = BuildMatches(tournament.Type, tournament.Players.ToArray());
 
             while (matches.Length != 1)
             {

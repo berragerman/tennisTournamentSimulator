@@ -19,8 +19,19 @@ namespace Infrastructure.Persistence.Configurations
 
             builder.HasMany(t => t.Players)
                     .WithMany(p => p.Tournaments)
-                    .UsingEntity(j => j.ToTable("PlayersTournaments"));
-            ;
+                    .UsingEntity<PlayerTournament>(
+                    t => t
+                        .HasOne<Player>()
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .HasConstraintName("FK_PlayersTournaments_Players_PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade),
+                    p => p
+                        .HasOne<Tournament>()
+                        .WithMany()
+                        .HasForeignKey("TournamentId")
+                        .HasConstraintName("FK_PlayersTournaments_Tournaments_TournamentId")
+                        .OnDelete(DeleteBehavior.ClientCascade));
         }
     }
 }
