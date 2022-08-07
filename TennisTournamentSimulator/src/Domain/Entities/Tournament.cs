@@ -7,7 +7,7 @@ namespace Domain.Entities
     {
         public TournamentType Type { get; set; }
         public TournamentStatus Status { get; set; }
-        public Player[] Players { get; set; }
+        public virtual Player[] Players { get; set; }
         public Player Winner { get; set; }
         public DateTime Date { get; set; }
     }

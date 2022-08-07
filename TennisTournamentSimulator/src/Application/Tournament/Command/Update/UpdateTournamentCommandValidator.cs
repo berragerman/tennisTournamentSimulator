@@ -5,12 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Tournament.Command.Create
+namespace Application.Tournament.Command.Update
 {
-    public class CreateTournamentCommandValidator : AbstractValidator<CreateTournamentCommand>
+
+    public class UpdateTournamentCommandValidator : AbstractValidator<UpdateTournamentCommand>
     {
 
-        public CreateTournamentCommandValidator() {
+        public UpdateTournamentCommandValidator()
+        {
+            
             RuleFor(v => v.Name)
                 .MinimumLength(10)
                 .MaximumLength(100)
