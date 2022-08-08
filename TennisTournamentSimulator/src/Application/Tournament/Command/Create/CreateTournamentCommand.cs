@@ -32,7 +32,7 @@ namespace Application.Tournament.Command.Create
                 Name = request.Name,
                 Type = request.Type,
                 Status = Domain.Enums.TournamentStatus.Pending,
-                Players = request.Players.Select(id => new Domain.Entities.Player() { Id = id }).ToList()
+                PlayerTournaments = request.Players.Select(id => new Domain.Entities.PlayerTournament() { PlayerId = id }).ToList()
             };
 
             _context.Tournaments.Add(tournament);

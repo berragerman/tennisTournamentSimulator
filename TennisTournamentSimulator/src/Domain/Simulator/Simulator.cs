@@ -25,12 +25,12 @@ namespace Domain.Simulators
             if (tournament.Status != TournamentStatus.Pending)
                 throw new InvalidTournamentException();
 
-            if (tournament.Players == null ||
-                !tournament.Players.Any() ||
-                (Math.Sqrt(tournament.Players.Count()) % 1) != 0)
+            if (tournament.PlayerTournaments == null ||
+                !tournament.PlayerTournaments.Any() ||
+                (Math.Sqrt(tournament.PlayerTournaments.Count()) % 1) != 0)
                 throw new WrongNumberOfPlayersException();
             
-            IMatch[] matches = BuildMatches(tournament.Type, tournament.Players.ToArray());
+            IMatch[] matches = BuildMatches(tournament.Type, tournament.PlayerTournaments.Select(pt => pt.Player).ToArray());
 
             while (matches.Length != 1)
             {

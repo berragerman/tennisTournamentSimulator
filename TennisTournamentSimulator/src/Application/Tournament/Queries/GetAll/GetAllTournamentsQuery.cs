@@ -2,6 +2,7 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,8 @@ namespace Application.Tournament.Queries.GetAll
             return Task.Factory.StartNew(() =>
             {
                 var query = _context.Tournaments
+                                .Include(t => t.PlayerTournaments)
+                                .ThenInclude(t => t.Player)
                                         .AsQueryable();
 
                 if (!string.IsNullOrEmpty(request.Name))
@@ -48,9 +51,8 @@ namespace Application.Tournament.Queries.GetAll
                 if (!string.IsNullOrEmpty(request.Type))
                     query = query.Where(x => (Domain.Enums.TournamentType) Enum.Parse(typeof(Domain.Enums.TournamentType), request.Type) == x.Type);
 
-                return query.OrderByDescending(p => p.Name)
-                        .ProjectTo<TournamentDTO>(_mapper.ConfigurationProvider)
-                        .ToArray();
+                return _mapper.Map<TournamentDTO[]>(query.ToArray());
+
             });
         }
     }

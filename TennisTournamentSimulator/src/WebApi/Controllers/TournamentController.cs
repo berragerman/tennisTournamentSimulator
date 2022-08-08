@@ -1,8 +1,10 @@
 using Application.Player.Command.Create;
 using Application.Player.Command.Delete;
 using Application.Player.Command.Update;
+using Application.Player.Queries;
 using Application.Tournament.Command.Create;
 using Application.Tournament.Command.Delete;
+using Application.Tournament.Command.Play;
 using Application.Tournament.Command.Update;
 using Application.Tournament.Queries;
 using Application.Tournament.Queries.GetAll;
@@ -43,6 +45,12 @@ namespace WebApi.Controllers
         public async Task<ActionResult<int>> Create(CreateTournamentCommand command)
         {
             return await Mediator.Send(command);
+        }
+
+        [HttpPost("[action]/{tournamentId}")]
+        public async Task<ActionResult<PlayerDTO>> Play(int tournamentId)
+        {
+            return await Mediator.Send(new PlayTournamentCommand() { TournamentId = tournamentId });
         }
         [HttpPut("[action]")]
         public async Task<ActionResult> Update(UpdateTournamentCommand command)

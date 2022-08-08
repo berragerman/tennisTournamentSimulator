@@ -4,6 +4,7 @@ using Application.Player.Queries;
 using AutoMapper;
 using Domain.Simulators;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Tournament.Command.Play
 {
@@ -26,7 +27,11 @@ namespace Application.Tournament.Command.Play
         }
         public async Task<PlayerDTO> Handle(PlayTournamentCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.Tournaments.FindAsync(request.TournamentId);
+            var entity = await _context.Tournaments
+                                        .Include(t => t.PlayerTournaments)
+                                        .ThenInclude(t => t.Player)
+                                        .AsQueryable()
+                                        .FirstAsync(t => t.Id == request.TournamentId);
 
             if (entity == null)
             {
@@ -35,10 +40,10 @@ namespace Application.Tournament.Command.Play
 
             var winner = _simulator.Play(entity);
 
-            entity.Winner = winner;
-            entity.Status = Domain.Enums.TournamentStatus.Finished;
-
-            await _context.SaveChangesAsync(cancellationToken);
+            // TODO - Fix this:
+            // entity.Winner = winner;
+            // entity.Status = Domain.Enums.TournamentStatus.Finished;
+            // await _context.SaveChangesAsync(cancellationToken);
 
             return _mapper.Map<PlayerDTO>(winner);
         }

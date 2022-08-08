@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -9,7 +10,8 @@ namespace Domain.Entities
         public int Speed { get; set; }
         public int Reaction { get; set; }
         public int Lucky { get; set; }
-        public List<Tournament> Tournaments { get; set; }
-        public ICollection<PlayerTournament> PlayerTournaments { get; set; }
+        [NotMapped]
+        public ICollection<Tournament> Tournaments { get; set; }
+        public List<PlayerTournament> PlayerTournaments { get; set; }
     }
 }

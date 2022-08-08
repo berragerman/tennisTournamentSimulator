@@ -13,25 +13,31 @@ namespace Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Player> builder)
         {
+            builder.HasKey(t => t.Id);
+
             builder.Property(t => t.Name)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.HasMany(p => p.Tournaments)
-                   .WithMany(t => t.Players)
-                   .UsingEntity<PlayerTournament>(
-                   p => p
-                       .HasOne<Tournament>()
-                       .WithMany()
-                       .HasForeignKey("TournamentId")
-                       .HasConstraintName("FK_PlayersTournaments_Tournaments_TournamentId")
-                       .OnDelete(DeleteBehavior.ClientCascade),
-                    t => t
-                       .HasOne<Player>()
-                       .WithMany()
-                       .HasForeignKey("PlayerId")
-                       .HasConstraintName("FK_PlayersTournaments_Players_PlayerId")
-                       .OnDelete(DeleteBehavior.Cascade));
+            builder
+            .HasMany(t => t.Tournaments)
+            .WithMany(p => p.Players)
+            .UsingEntity<PlayerTournament>(
+                j => j
+                    .HasOne(pt => pt.Tournament)
+                    .WithMany(p => p.PlayerTournaments)
+                    .HasForeignKey(pt => pt.TournamentId)
+                    .OnDelete(DeleteBehavior.NoAction),
+                j => j
+                    .HasOne(pt => pt.Player)
+                    .WithMany(t => t.PlayerTournaments)
+                    .HasForeignKey(pt => pt.PlayerId)
+                    .OnDelete(DeleteBehavior.NoAction),
+                j =>
+                {
+                    j.Property(pt => pt.Created).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                    j.HasKey(t => new { t.PlayerId, t.TournamentId });
+                });
         }
     }
 }

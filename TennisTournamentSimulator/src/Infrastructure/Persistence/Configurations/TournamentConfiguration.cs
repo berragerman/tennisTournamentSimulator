@@ -13,25 +13,18 @@ namespace Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Tournament> builder)
         {
+            builder.HasKey(t => t.Id);
+
+            builder.HasOne(t => t.Winner)
+                    .WithMany()
+                    .HasForeignKey(t => t.Id)
+                    .OnDelete(DeleteBehavior.NoAction);
+
             builder.Property(t => t.Name)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.HasMany(t => t.Players)
-                    .WithMany(p => p.Tournaments)
-                    .UsingEntity<PlayerTournament>(
-                    t => t
-                        .HasOne<Player>()
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .HasConstraintName("FK_PlayersTournaments_Players_PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade),
-                    p => p
-                        .HasOne<Tournament>()
-                        .WithMany()
-                        .HasForeignKey("TournamentId")
-                        .HasConstraintName("FK_PlayersTournaments_Tournaments_TournamentId")
-                        .OnDelete(DeleteBehavior.ClientCascade));
+           
         }
     }
 }

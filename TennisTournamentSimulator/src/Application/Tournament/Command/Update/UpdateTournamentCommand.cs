@@ -38,7 +38,7 @@ namespace Application.Tournament.Command.Update
 
             entity.Name = request.Name;
             entity.Type = request.Type;
-            entity.Players = request.Players.Select(id => new Domain.Entities.Player() { Id = id }).ToList();
+            entity.PlayerTournaments = request.Players.Select(id => new Domain.Entities.PlayerTournament() { PlayerId = id }).ToList();
             entity.Inactive = request.Inactive;
 
 

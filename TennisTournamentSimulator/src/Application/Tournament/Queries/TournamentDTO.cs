@@ -14,14 +14,13 @@ namespace Application.Tournament.Queries
         public string Name { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
+        public int Type { get; set; }
 
-        public string Type { get; set; }
+        public int Status { get; set; }
 
-        public string Status { get; set; }
+        public PlayerDTO[]? Players { get; set; }
 
-        public PlayerDTO Players { get; set; }
-
-        public PlayerDTO Winner { get; set; }
+        public PlayerDTO? Winner { get; set; }
 
         public bool Inactive { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -30,8 +29,10 @@ namespace Application.Tournament.Queries
         public void Mapping(MappingProfile profile)
         {
             profile.CreateMap<Domain.Entities.Tournament, TournamentDTO>()
-                .ForMember(t => t.Status, opt => opt.MapFrom(t => Enum.GetName(typeof(Domain.Enums.TournamentStatus), t.Status )))
-                .ForMember(t => t.Type, opt => opt.MapFrom(t =>  Enum.GetName(typeof(Domain.Enums.TournamentType), t.Type)))
+                //.ForMember(t => t.Status, opt => opt.MapFrom(t => Enum.GetName(typeof(Domain.Enums.TournamentStatus), t.Status )))
+                //.ForMember(t => t.Type, opt => opt.MapFrom(t =>  Enum.GetName(typeof(Domain.Enums.TournamentType), t.Type)))
+                .ForMember(t => t.Players, opt => 
+                     opt.MapFrom(t => t.Players != null ? t.Players.ToArray() : Array.Empty<Domain.Entities.Player>() ))
                 .ForMember(t => t.CreatedAt, opt => opt.MapFrom(p => p.Created))
                 .ForMember(t => t.UpdatedAt, opt => opt.MapFrom(p => p.Updated));
         }
