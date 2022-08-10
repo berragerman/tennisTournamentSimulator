@@ -1,23 +1,23 @@
 version: '3.4'
 
 services:
-  # webui:
-  #   image: ${DOCKER_REGISTRY-}webui
-  #   build:
-  #     context: .
-  #     dockerfile: src/WebApi/Dockerfile
-  #   environment:
-  #     - "ConnectionStrings__DefaultConnection=Server=db;Database=TournamentSimmulatorDb;User=sa;Password=Your_password123;MultipleActiveResultSets=true"
-  #     - "ASPNETCORE_Kestrel__Certificates__Default__Password="
-  #     - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dotnet-devcert.pfx"
-  #   volumes:
-  #     - ~/.aspnet/https:/https:ro
-  #   ports:
-  #     - "5000:5000"
-  #     - "5001:5001"
-  #   depends_on:
-  #     - db
-  #   restart: on-failure
+  webui:
+    image: ${DOCKER_REGISTRY-}webui
+    build:
+      context: .
+      dockerfile: src/WebApi/Dockerfile
+    environment:
+      - "ConnectionStrings__DefaultConnection=Server=db;Database=TournamentSimmulatorDb;User=sa;Password=Your_password123;MultipleActiveResultSets=true"
+      # - "ASPNETCORE_Kestrel__Certificates__Default__Password="
+      # - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dotnet-devcert.pfx"
+    volumes:
+      - ~/.aspnet/https:/https:ro
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    depends_on:
+      - db
+    restart: on-failure
 
   db:
     image: "mcr.microsoft.com/mssql/server"
