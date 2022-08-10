@@ -10,7 +10,7 @@ namespace Domain.Entities
         public int? WinnerId { get; set; }
         public Player Winner { get; set; }
         public DateTime Date { get; set; }
-        public Player[] Players { get => this.PlayerTournaments.Select(pt => pt.Player).ToArray(); }
+        public List<Player> Players { get => this.PlayerTournaments.Select(pt => pt.Player).ToList(); }
         public List<PlayerTournament> PlayerTournaments { get; set; } = new List<PlayerTournament>();
     }
 }

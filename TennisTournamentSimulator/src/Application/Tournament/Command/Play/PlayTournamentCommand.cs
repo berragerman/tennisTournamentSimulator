@@ -38,12 +38,14 @@ namespace Application.Tournament.Command.Play
                 throw new NotFoundException(nameof(Domain.Entities.Tournament), request.TournamentId);
             }
 
+            entity.Date = DateTime.Now;
+
             var winner = _simulator.Play(entity);
 
             // TODO - Fix this:
-            // entity.Winner = winner;
-            // entity.Status = Domain.Enums.TournamentStatus.Finished;
-            // await _context.SaveChangesAsync(cancellationToken);
+            entity.WinnerId = winner.Id;
+            entity.Status = Domain.Enums.TournamentStatus.Finished;
+            await _context.SaveChangesAsync(cancellationToken);
 
             return _mapper.Map<PlayerDTO>(winner);
         }

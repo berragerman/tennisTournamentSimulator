@@ -51,6 +51,8 @@ namespace Application.Tournament.Queries.GetAll
                 if (!string.IsNullOrEmpty(request.Type))
                     query = query.Where(x => (Domain.Enums.TournamentType) Enum.Parse(typeof(Domain.Enums.TournamentType), request.Type) == x.Type);
 
+                var result = query.ToArray();
+
                 return _mapper.Map<TournamentDTO[]>(query.ToArray());
 
             });
