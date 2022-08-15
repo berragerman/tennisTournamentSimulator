@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./TennisTournamentSimulator/src/WebApi
     - name: Build
-      run: dotnet build ./TennisTournamentSimulator/src/WebApi
+      run: dotnet build ./TennisTournamentSimulator/src/WebApi --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
