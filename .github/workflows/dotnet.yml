@@ -22,4 +22,4 @@ jobs:
     - name: Build
       run: dotnet build ./TennisTournamentSimulator/src/WebApi --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./TennisTournamentSimulator/tests/Domain.UnitTests --no-build --verbosity normal
