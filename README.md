@@ -21,6 +21,9 @@ The solution is a ASP.NET Core API following the principles of Clean Architectur
 * [XUnit](https://xunit.net/), [Moq](https://github.com/moq) 
 * [Docker](https://redis.io/)
 
+## To run it
+1. Run the following command on a terminal: `docker-compose up --build`
+2. Open a browser and navigate to [WebApi swagger](http:\\localhost:5000\swagger)
 
 ## Getting Started (Development on Windows)
 
